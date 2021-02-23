@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Landing Page</title>
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage('resize', "*");
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: lightblue;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #page-wrapper {
+            position: relative;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 0 20px;
+            height: 40px;
+            font-size: 1em;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .grid {
+            display: flex;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            min-height: 75px;
+            padding: 0px 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #eee;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-wrap: wrap;
+            }
+        }
+
+        .logo {
+            width: 60vw;
+        }
+
+        @media (max-width: 650px) {
+            .logo {
+                margin-top: 15px;
+                width: 100%;
+                position: relative;
+            }
+        }
+
+        .logo > img {
+            width: 100%;
+            height: 100%;
+            max-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-left: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .logo > img {
+                margin: 0 auto;
+            }
+        }
+
+        nav {
+            font-weight: 400;
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                margin-top: 10px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 0 50px;
+            }
+            nav li {
+                padding-bottom: 5px;
+            }
+        }
+
+        nav > ul {
+            width: 35vw;
+            display: flex;
+            flex-direction: row;justify-content: space-around;
+        }
+
+        @media (max-width: 650px) {
+            nav > ul {
+                flex-direction: column;
+            }
+        }
+
+        #drinks {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 200px;
+            margin-top: 50px;
+        }
+
+        #drinks > h2 {
+            margin-top: 20px;
+            word-wrap: break-word;
+        }
+
+        #drinks input[type='email'] {
+            max-width: 275px;
+            width: 100%;
+            padding: 5px;
+        }
+
+            #drinks input[type='submit'] {
+                max-width: 150px;
+                width: 100%;
+                margin: 15px 0;
+                border: 0;
+                background-color: lightgreen;
+            }
+
+            #drinks input[type='submit']:hover {
+                background-color: orange;
+                transition: background-color 1s;
+            }
+
+            @media (max-width: 650px) {
+                #drinks {
+                    margin-top: 120px;
+                }
+            }
+
+        #mead {
+            margin-top: 30px;
+        }
+
+        #mead .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 125px;
+            width: 20vw;
+            color: orangered;
+        }
+
+        @media (max-width: 550px) {
+            #drinks .icon {
+                display: none;
+            }
+        }
+
+        #drinks .description {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 125px;
+            width: 80vw;
+            padding: 10px;
+        }
+
+        @media (max-width: 550px) {
+            #drinks .description {
+                width: 100%;
+                text-align: center;
+                padding: 0;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            #drinks {
+                margin-top: 0;
+            }
+        }
+
+        #video {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #video > iframe {
+            max-width: 560px;
+            width: 100%;
+        }
+
+        #pricing {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: calc(100% / 3);
+            margin: 10px;
+            border: 1px solid #000;
+            border-radius: 3px;
+        }
+
+        .product > .level {
+            background-color: #ddd;
+            color: black;
+            padding: 15px 0;
+            width: 100%;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .product > h2 {
+            margin-top: 15px;
+        }
+
+        .product > ol {
+            margin: 15px 0;
+        }
+
+        .product > ol > li {
+            padding: 5px 0;
+        }
+
+        .product > button {
+            border: 0;
+            margin: 15px 0;
+            background-color: lightgreen;
+            font-weight: 400;
+        }
+
+        .product > button:hover {
+            background-color: orange;
+            transition: background-color 1s;
+        }
+
+        @media (max-width: 800px) {
+            #pricing {
+                flex-direction: column;
+            }
+        }
+
+        .product {
+            max-width: 300px;
+            width: 100%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 30px;
+            background-color: #ddd;
+            padding: 20px;
+        }
+
+        footer > ul {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        footer > ul > li {
+            padding: 0 10px;
+        }
+
+        footer > span {
+            margin-top: 5px;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 0.9em;
+            color: #444;
+        }
+    </style>
+</head>
+<body tranlate="no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <div id="page-wrapper">
+        <header id="header">
+            <div class="logo">
+                <img src="./assets/logo.png" alt="" class="header-img" />
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li>
+                        <a class="nav-link" src="" href="#mead" alt="">Meads</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" src="" href="#video" alt="">Video</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" src="" href="#pricing" alt="">Order Mead</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container"></div>
+        <section id="drinks">
+            <h2>
+                Mead, drink like the Gods 
+            </h2>
+            <form id="form" action="https://www.freecodecamp.com/email-submit">
+                <input name="email" id="email" type="email" placeholder="Enter your email address" required />
+                <input id="submit" type="submit" value="Get started" class="btn" />
+            </form>
+        </section>
+        <div class="container">
+            <section id="mead">
+                <div class="grid">
+                    <div class="icon" style="font-size: 80px;">
+                        <i class="fas fa-beer"></i>
+                    </div>
+                    <div class="description">
+                        <h2>Midevil Mead</h2>
+                        <p>Mead, also called metheglin, alcoholic beverage fermented from honey and water; sometimes yeast is added to accelerate the fermentation. Strictly speaking, the term metheglin (from the Welsh meddyglyn, “physician,” for the drink’s reputed medicinal powers) refers only to spiced mead, made with the addition of spices and herbs such as cloves, ginger, rosemary, hyssop, and thyme; often, however, the terms are interchanged. Mead can be light or rich, sweet or dry, or even sparkling. In the Middle Ages it was usually similar to sparkling table wine.</p>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="icon" style="font-size: 80px;">
+                        <i class="fas fa-beer"></i>
+                    </div>
+                    <div class="description">
+                        <h2>Viking Mead</h2>
+                        <p>Mead, ale, and wine were all made in the same way. One would fill a vat with water and set it over a fire and would then add honey and yeast(for mead), bring the mixture to a boil, and then place the open vat beneath some sort of fruit-bearing tree to catch the wild yeast. If one wanted to make ale, one left out the honey and substituted malted barleyand, to make wine, one used fruit instead of barley. Alcohol content was regulated by the amount of sugar added which took the form of sap from the trees.</p>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="icon" style="font-size: 80px;">
+                        <i class="fas fa-beer"></i>
+                    </div>
+                    <div class="description">
+                        <h2>Craft Mead</h2>
+                        <p>At its most basic, mead is honey mixed with water and yeast. It can be sweet, semi-sweet, or sour like a Warhead. Thin out unpasteurized honey with enough water and it will naturally start turning to mead. It’s thateasy! Honey on its own, though, doesn’t have the nutrients to support a vigorous fermentation. So it either needs additional nutrient,or fruity/herby/beer-y adjuncts to give the yeast enough to nosh on to reach the brewer’s desired profile. And each of those adjuncts goes on to make a subcategory. Add fruit and it’s a melomel. Apples or cider make a cyser. Grapes garner a pyment. Herbs result a metheglin. And, a mead-beer concoction creates a braggot. But just as anIPA, a stout, or a Kolsch are all beer, all these are still mead.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vRZElC2SUfw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </section>
+            <section id="pricing">
+                <div class="product">
+                    <div class="level">Midevil Mead</div>
+                    <h2>$35</h2>
+                    <ol>
+                        <li>Blah blah blah blah....</li>
+                        <li>Blah blah blah blah....</li>
+                        <li>Blah blah blah blah....</li>
+                    </ol>
+                    <button class="btn">Select</button>
+                </div>
+                <div class="product">
+                    <div class="level">Viking Mead</div>
+                    <h2>$45</h2>
+                    <ol>
+                        <li>Blah blah blah blah....</li>
+                        <li>Blah blah blah blah....</li>
+                        <li>Blah blah blah blah....</li>
+                    </ol>
+                    <button class="btn">Select</button>
+                </div>
+                <div class="product">
+                    <div class="level">Craft Mead</div>
+                    <h2>$25</h2>
+                    <ol>
+                        <li>Blah blah blah blah....</li>
+                        <li>Blah blah blah blah....</li>
+                        <li>Blah blah blah blah....</li>
+                    </ol>
+                    <button class="btn">Select</button>
+                </div>
+            </section>
+            <footer>
+                <ul>
+                    <li>
+                        <a href="#">Privacy</a>
+                    </li>
+                    <li>
+                        <a href="#">Terms</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+                <span>Copyright 2021, Original Mead</span>
+            </footer>
+        </div>
+    </div>
+
+</body>
+</html>
